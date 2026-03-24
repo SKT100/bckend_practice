@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <title>User Directory</title>
+    </head>
+
+    <body class="bg-zinc-900 min-h-screen p-8">
+        <a href="/" class="text-blue-700">Back</a>
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-5xl font-bold mb-8 text-white text-center">Users</h1>
+            <div class="users flex gap-3 flex-wrap align-center justify-center">
+                <% users.forEach(function(user){ %>
+                    <div
+                        class="user w-100 p-4 bg-zinc-800 rounded-xl border border-zinc-700 hover:border-zinc-500 transition-colors shadow-lg">
+                        <div class="img h-48 bg-gradient-to-tr from-red-500 to-orange-400 rounded-lg">
+                            <img src="<%= user.img %>" alt="photo">
+                        </div>
+                        <div class="mt-4">
+                            <h2 class="text-white font-semibold text-xl"><%= user.name %></h2>
+                            <p class="text-zinc-400 text-sm"><%= user.email %></p>
+                        </div>
+                        <div class="flex justify-between gap-2">
+                            <a class="text-green-500 pt-4">Edit</a>
+                            <a class="text-red-500 pt-4 cursor-pointer" href="/delete/<%= user._id %>">Delete</a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </body>     
+</html>
